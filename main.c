@@ -68,10 +68,17 @@ void regex_check(const char *raw) {
 
     }
 }
+int main(int argc, char **argv) {
 
-int main() {
 
-    http_get("https://xayah.info");
+    if(argc < 2) {
+        printf("Please provide a url as first argument!\n");
+        return 0;
+    }
+    char* target = argv[1];
+    printf("Fetching numbers for: %s:\n", target);
+
+    http_get(target);
     char *raw = last_request;
     regex_check(raw);
 
